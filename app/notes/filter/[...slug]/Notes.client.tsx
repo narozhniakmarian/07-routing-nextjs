@@ -13,10 +13,10 @@ import Pagination from "@/components/Pagination/Pagination";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import Loader from "@/app/loading";
-import ErrorMessage from "@/app/notes/error";
+import ErrorMessage from "@/app/notes/filter/[...slug]/error";
 import NoteList from "@/components/NoteList/NoteList";
 
-export default function NotesClient() {
+export default function NotesClient({ tag }: { tag?: string }) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -28,8 +28,8 @@ export default function NotesClient() {
   });
 
   const { data, isLoading, isError, isSuccess } = useQuery({
-    queryKey: ["noteHubKey", search, page],
-    queryFn: () => noteFetch(search, page),
+    queryKey: ["noteHubKey", search, page, tag],
+    queryFn: () => noteFetch(search, page, undefined, tag),
     placeholderData: keepPreviousData,
   });
   const notes = data?.notes ?? [];
@@ -71,7 +71,6 @@ export default function NotesClient() {
         )}
 
         <button className={css.button} onClick={() => setIsOpenModal(true)}>
-          {" "}
           Create note
         </button>
 

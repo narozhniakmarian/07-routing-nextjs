@@ -1,42 +1,30 @@
-/* components/Footer.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
 
-
-.footer {
-    margin-bottom: 22px;
-    padding: 20px;
-    background-color: #f0f0f0;
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    margin: 0 auto;
-    border-top: 1px solid #ddd;
+.sidebar {
     width: 90%;
-    padding: 1.5rem 18rem;
     background-color: #646ae18c;
     color: white;
-    border-top-left-radius: 210px;
-    border-top-right-radius: 210px;
+    padding: 16px;
+    /* height: 100vh; */
+    border-radius: 12px;
+    margin: 22px auto 22px auto;
+    /* margin-bottom: 22px; */
     -webkit-box-shadow: 0 0 20px #a90dfda5, inset 0px 0px 0.9em 10px #0d00ff4d,
         0px 0px 0.8em 20px #a90dfda5, inset 0 0 10px #0d6dfd33;
     -moz-box-shadow: 0 0 10px #a90dfda5, inset 0px 0px 0.7em 10px #0d00ff4d,
         0px 0px 0.9em 0px #a90dfda5, inset 0 0 10px #0d6dfd33;
     box-shadow: 0 0 10px #a90dfda5, inset 0px 0px 0.9em 0px #0d00ff4d,
         0px 0px 0.7em 0px #0d00ff4d, inset 0 0 10px #0d6dfd33;
-
-}
-
-.wrap {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
 }
 
-.footer a {
-    color: #226ec5;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
+.notesWrapper {
+    width: 100%;
 }

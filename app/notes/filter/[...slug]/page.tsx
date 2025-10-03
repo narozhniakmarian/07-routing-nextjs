@@ -8,8 +8,15 @@ import {
 } from "@tanstack/react-query";
 import NotesClient from "./Notes.client";
 
-async function Notes() {
+interface NotesProps {
+  params: Promise<{ slug: string[] }>;
+}
+
+async function Notes({ params }: NotesProps) {
   const queryClient = new QueryClient();
+
+  const { slug } = await params;
+  const tag = slug[0] === "All" ? undefined : slug[0];
 
   const search = "";
   const page = 1;
@@ -20,7 +27,7 @@ async function Notes() {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient />
+      <NotesClient tag={tag} />
     </HydrationBoundary>
   );
 }
