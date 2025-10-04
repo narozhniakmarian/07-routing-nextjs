@@ -28,8 +28,8 @@ export default function NotesClient({ tag }: { tag?: string }) {
   });
 
   const { data, isLoading, isError, isSuccess } = useQuery({
-    queryKey: ["noteHubKey", search, page, tag],
-    queryFn: () => noteFetch(search, page, undefined, tag),
+    queryKey: ["noteHubKey", debouncedSearch, page, tag],
+    queryFn: () => noteFetch(debouncedSearch, page, undefined, tag),
     placeholderData: keepPreviousData,
   });
   const notes = data?.notes ?? [];

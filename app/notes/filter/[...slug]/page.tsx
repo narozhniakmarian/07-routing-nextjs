@@ -22,8 +22,8 @@ async function Notes({ params }: NotesProps) {
   const page = 1;
 
   await queryClient.prefetchQuery({
-    queryKey: ["noteHubKey", search, page],
-    queryFn: () => noteFetch(search, page),
+    queryKey: ["noteHubKey", search, page, tag],
+    queryFn: () => noteFetch(search, page, undefined, tag),
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
